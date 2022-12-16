@@ -1,0 +1,37 @@
+/* -------------------------
+------ Remcos RAT-----------
+--------------------------- */
+
+rule RemcosRATByName
+{
+meta:
+ author = "@neonprimetime"
+ description = "Remcos RAT"
+strings:
+ $string0 = "Software\\Remcos" nocase
+ $string1 = "\\remcos\\" nocase
+ $string2 = "REMCOS v" nocase
+ $string4 = "Remcos_" nocase
+condition:
+ 1 of them
+}
+
+rule RemcosRATByKeyword
+{
+meta:
+ author = "@neonprimetime"
+ description = "Remcos RAT"
+strings:
+ $string1 = "Keylogger Started" nocase
+ $string2 = "Connected to C&C" nocase
+ $string3 = "Screenshots" nocase
+ $string4 = "OpenCamera" nocase
+ $string5 = "Uploading file to C&C" nocase
+ $string6 = "Initializing connection to C&C" nocase
+ $string7 = "cleared!]" nocase
+ $string8 = "EnableLUA /t REG_DWORD /d 0" nocase
+ $string9 = "RemWatchdog" nocase
+ $string10 = "restarted by watchdog" nocase
+condition:
+ 3 of them
+}
