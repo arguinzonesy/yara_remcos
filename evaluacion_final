@@ -12,6 +12,7 @@ strings:
  $string1 = "\\remcos\\" nocase
  $string2 = "REMCOS v" nocase
  $string4 = "Remcos_" nocase
+ $a1 = "ePK"
 condition:
  1 of them
 }
