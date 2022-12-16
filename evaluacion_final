@@ -37,11 +37,16 @@ condition:
 }
 
 rule RemcosCustom{
+ meta:
+  author = "Grupo 10"
+  date = "2022-01-22"
+  filetype = "xlsx"
+  hash_1 = "61393cc2ed5c3e69c914089e2d1eafc2"
 
 strings:
  $s1 = "b1df072eba923c472e461200b35823fde7f8e640bfb468ff5ac707369a2fa35e"
  $s2 = "[Content_Types].xml"
- hash = "61393cc2ed5c3e69c914089e2d1eafc2"
+ $hash = "61393cc2ed5c3e69c914089e2d1eafc2"
  $PK = "PK"
  
 condition:
