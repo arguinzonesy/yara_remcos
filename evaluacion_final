@@ -16,12 +16,8 @@ condition:
  1 of them
 }
 
-rule Email_Generic_Phishing : email
+rule Email_Generic_Phishing
 {
-meta:
- Author = "Tyler <@InfoSecTyler>"
- Description ="Generic rule to identify phishing emails"
-
 strings:
  $eml_1="From:"
  $eml_2="To:"
