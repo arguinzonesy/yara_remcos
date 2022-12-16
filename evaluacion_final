@@ -41,7 +41,8 @@ rule RemcosCustom{
 strings:
  $s1 = "b1df072eba923c472e461200b35823fde7f8e640bfb468ff5ac707369a2fa35e"
  $s2 = "[Content_Types].xml"
- $s3 = "13.107.42.13"
+ hash = "61393cc2ed5c3e69c914089e2d1eafc2"
+ $PK = "PK"
  
 condition:
  1 of them
