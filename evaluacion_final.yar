@@ -20,14 +20,12 @@ strings:
   $key_7 = "bitcoin address" nocase
   $key_8 = "access" nocase
   $key_9 = "virus" nocase
-  
   $mime = "MIME-Version:"
   $base64 = "Content-Transfer-Encoding: base64"
   $mso = "Content-Type: application/x-mso" 
-  
 condition:
   all of ($eml*) and
-  any of ($key*) and ($mime at 0 and $base64 or $mso)
+  ((any of ($key*)) and $mime and ($base64 or $mso))
 }
 
 /*--------------------------------------------------------------------------------------------------------*/
