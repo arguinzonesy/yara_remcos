@@ -11,7 +11,6 @@ strings:
   $eml_1="From:"
   $eml_2="To:"
   $eml_3="Subject:"
-  
   $key_1 = "BTC" nocase
   $key_2 = "Wallet" nocase
   $key_3 = "Bitcoin" nocase
@@ -28,7 +27,7 @@ strings:
   
 condition:
   all of ($eml*) and
-  any of ($key*) and ($mime at 0 and $base64 and $mso)
+  any of ($key*) and ($mime at 0 and $base64 or $mso)
 }
 
 /*--------------------------------------------------------------------------------------------------------*/
