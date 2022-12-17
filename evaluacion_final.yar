@@ -53,3 +53,19 @@ strings:
 condition:
   ($officemagic at 0 and any of ($vba*)) or ($zipmagic at 0 and any of ($xmlstr*) or $string1)
 }
+
+/*--------------------------------------------------------------------------------------------------------*/
+
+rule IP_Sospechosa 
+
+meta:
+  author = "Grupo 10 - USACH"
+  date= "18-12-2022"
+  description = "Busca IP en la captura de Trafico"
+  
+strings:
+  $ipv4 = /([0-9]{1,3}\.){3}[0-9]{1,3}/ wide ascii
+  
+condition:
+  any of them
+}
