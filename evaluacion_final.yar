@@ -56,16 +56,17 @@ condition:
 
 /*--------------------------------------------------------------------------------------------------------*/
 
-rule IP_Sospechosa 
+rule IP_Sospechosa {
 
 meta:
   author = "Grupo 10 - USACH"
   date= "18-12-2022"
   description = "Busca IP en la captura de Trafico"
-  
+
 strings:
-  $ipv4 = /([0-9]{1,3}\.){3}[0-9]{1,3}/ wide ascii
-  
+  $ip1 = "13.107.42.13"
+  $ip2 = "64.188.19.241"
+
 condition:
   any of them
 }
