@@ -61,7 +61,7 @@ rule IP_Sospechosa {
 meta:
   author = "Grupo 10 - USACH"
   date= "18-12-2022"
-  description = "Busca IP en la captura de Trafico"
+  description = "Busca Patrones de Archivos con VBA sospechosos"
 
 strings:
   $ip1 = "13.107.42.13"
