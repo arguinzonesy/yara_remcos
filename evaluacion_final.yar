@@ -55,7 +55,7 @@ condition:
   any of ($lie*) and ($mime at 0 and $base64 and $mso)
 }
 
-
+/*--------------------------------------------------------------------------------------------------------*/
 
 rule Archivo_Sospechoso {
 
@@ -79,28 +79,14 @@ condition:
 }
 
 
-/*
-
-rule IP {
-    meta:
-        author = "Antonio S. <asanchez@plutec.net>"
-    strings:
-        $ipv4 = /([0-9]{1,3}\.){3}[0-9]{1,3}/ wide ascii
-        $ipv6 = /(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))/ wide ascii
-    condition:
-        any of them
+rule IP_Sospechosa {
+meta:
+  author = "Grupo 10 - USACH"
+  date= "18-12-2022"
+  description = "Busca Patrones de Archivos con VBA sospechosos"
+strings:
+  $ipv4 = /([0-9]{1,3}\.){3}[0-9]{1,3}/ wide ascii
+condition:
+  any of them
 }
 
-rule RemcosCustom{
-
-strings:
- $s1 = "b1df072eba923c472e461200b35823fde7f8e640bfb468ff5ac707369a2fa35e"
- $s2 = "[Content_Types].xml"
- $s3 = "ePK"
- $hash = "61393cc2ed5c3e69c914089e2d1eafc2"
- $PK = "PK"
- 
-condition:
- 1 of them
- }
-*/
