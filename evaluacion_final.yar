@@ -1,109 +1,56 @@
-/* -------------------------
------- Remcos RAT-----------
---------------------------- */
+/* REGLAS PARA DETECCIÓN DE POTENCIAL RAT REMCOS */
 
-rule RemcosRATByName
-{
+/* Primera regla esta dirigida a verificar potencial Phishing */
+
+rule EmailPhishing {
+
 meta:
- author = "@neonprimetime"
- description = "Remcos RAT"
+  author = "Grupo 10 - USACH"
+  date= "18-12-2022"
+  description = "Desarrollada para Evaluación Final"
+
 strings:
- $string0 = "Software\\Remcos" nocase
- $string1 = "\\remcos\\" nocase
- $string2 = "REMCOS v" nocase
- $string4 = "Remcos_" nocase
-condition:
- 1 of them
-}
+  $eml_1="From:"
+  $eml_2="To:"
+  $eml_3="Subject:"
 
-rule EmailGenericPhishing
-{
-strings:
- $eml_1="From:"
- $eml_2="To:"
- $eml_3="Subject:"
+  $hi_1="Hola sr/sra" nocase 
+  $hi_2="Hello sir/madam" nocase
+  $hi_3="Atencion" nocase
+  $hi_4="Attention" nocase
+  $hi_5="Dear user" nocase
+  $hi_6="Account holder" nocase
 
-$greeting_1="Hello sir/madam" nocase
- $greeting_2="Attention" nocase
- $greeting_3="Dear user" nocase
- $greeting_4="Account holder" nocase
+  $key_1 = "BTC" nocase
+  $key_2 = "Wallet" nocase
+  $key_3 = "Bitcoin" nocase
+  $key_4 = "hours" nocase
+  $key_5 = "payment" nocase
+  $key_6 = "malware" nocase
+  $key_7 = "bitcoin address" nocase
+  $key_8 = "access" nocase
+  $key_9 = "virus" nocase
 
-$url_1="Click" nocase
- $url_2="Confirm" nocase
- $url_3="Verify" nocase
- $url_4="Here" nocase
- $url_5="Now" nocase
- $url_6="Change password" nocase 
+  $url_1="Click" nocase
+  $url_2="Confirm" nocase
+  $url_3="Verify" nocase
+  $url_4="Here" nocase
+  $url_5="Now" nocase
+  $url_6="Change password" nocase 
 
-$lie_1="Unauthorized" nocase
- $lie_2="Expired" nocase
- $lie_3="Deleted" nocase
- $lie_4="Suspended" nocase
- $lie_5="Revoked" nocase
- $lie_6="Unable" nocase
+  $lie_1="Unauthorized" nocase
+  $lie_2="Expired" nocase
+  $lie_3="Deleted" nocase
+  $lie_4="Suspended" nocase
+  $lie_5="Revoked" nocase
+  $lie_6="Unable" nocase
  
 condition:
- all of ($eml*) and
- any of ($greeting*) and
- any of ($url*) and
- any of ($lie*)
-}
-
-rule extortion_email
-{
-  meta:
-    author = "milann shrestha <Twitter - @x0verhaul>"
-		description = "Detects the possible extortion scam on the basis of subjects and keywords"
-		data = "12th May 2020"
-
-	strings:
-	  $eml1="From:"
-    $eml2="To:"
-    $eml3="Subject:"
-		
-		// Common Subjects scammer keep for luring the targets 
-    $sub1 = "Hackers know password from your account."
-    $sub2 = "Security Alert. Your accounts were hacked by a criminal group."
-    $sub3 = "Your account was under attack! Change your credentials!"
-    $sub4 = "The decision to suspend your account. Waiting for payment"
-    $sub5 = "Fraudsters know your old passwords. Access data must be changed."
-    $sub6 = "Your account has been hacked! You need to unlock it."
-    $sub7 = "Be sure to read this message! Your personal data is threatened!"
-    $sub8 = "Password must be changed now."
-		// Keywords used for extortion
-    $key1 = "BTC" nocase
-    $key2 = "Wallet" nocase
-    $key3 = "Bitcoin" nocase
-    $key4 = "hours" nocase
-    $key5 = "payment" nocase
-    $key6 = "malware" nocase
-    $key = "bitcoin address" nocase
-    $key7 = "access" nocase
-    $key8 = "virus" nocase
-	condition: 
-    all of ($eml*) and
-    any of ($sub*) and
-    any of ($key*)
-}
-
-rule RemcosRATByKeyword
-{
-meta:
- author = "@neonprimetime"
- description = "Remcos RAT"
-strings:
- $string1 = "Keylogger Started" nocase
- $string2 = "Connected to C&C" nocase
- $string3 = "Screenshots" nocase
- $string4 = "OpenCamera" nocase
- $string5 = "Uploading file to C&C" nocase
- $string6 = "Initializing connection to C&C" nocase
- $string7 = "cleared!]" nocase
- $string8 = "EnableLUA /t REG_DWORD /d 0" nocase
- $string9 = "RemWatchdog" nocase
- $string10 = "restarted by watchdog" nocase
-condition:
- 3 of them
+  all of ($eml*) and
+  any of ($hi*) and 
+  any of ($key*) or 
+  any of ($url*) or 
+  any of ($lie*)
 }
 
 rule office_document_vba : maldoc
